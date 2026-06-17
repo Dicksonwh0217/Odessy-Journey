@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash \"C:/Users/Dickson Shee Wei Hau/.claude/plugins/cache/superpowers-dev/superpowers/5.1.0/skills/brainstorming/scripts/start-server.sh\" --project-dir \"C:/Users/Dickson Shee Wei Hau/Desktop/Odessy\")",
+      "Bash(npm install:*)",
+      "Bash(echo \"EXIT_CODE: $?\")",
+      "Bash(python3 -c \":*)",
+      "Bash(node -e \":*)",
+      "Bash(cat \"C:/Users/Dickson Shee Wei Hau/Desktop/Odessy/.superpowers/brainstorm/\"*/state/server-info)",
+      "Bash(bash \"C:/Users/Dickson Shee Wei Hau/.claude/plugins/cache/superpowers-dev/superpowers/5.1.0/scripts/start-server.sh\" --project-dir \"C:/Users/Dickson Shee Wei Hau/Desktop/Odessy\")",
+      "Bash(for d:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/Dickson Shee Wei Hau/Desktop/Odessy/public/assets/**)",
+      "Bash(done)",
+      "Bash(timeout 10 npm run dev)"
+    ]
+  }
+}
