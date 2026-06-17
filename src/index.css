@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Wave scroll: inner container is 200% wide, slides left by 50% then loops ── */
+@keyframes waveScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Ship float: includes translateX(-50%) because the img uses left:50% ── */
+@keyframes shipFloat {
+  0%,  100% { transform: translateX(-50%) translateY(0px); }
+  50%        { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ── Screen fade-in on mount ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Seagull swaying on a rope (pendulum from top) ── */
+@keyframes seagullSway {
+  0%   { transform: rotate(-10deg); }
+  50%  { transform: rotate(10deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+/* ── Ship sails off to the right on CTA click ── */
+@keyframes shipSailRight {
+  0%   { transform: translateX(-50%) translateY(0px)  translateX(0vw); }
+  30%  { transform: translateX(-50%) translateY(-18px) translateX(8vw); }
+  100% { transform: translateX(-50%) translateY(-8px)  translateX(200vw); }
+}
+
+/* ── Custom utility classes ── */
+.animate-ship-float {
+  animation: shipFloat 4s ease-in-out infinite;
+}
+.animate-ship-sail {
+  animation: shipSailRight 2.5s ease-in forwards;
+}
+
+/* ── Mobile & iPad layout overrides (max-width: 1023px) ── */
+
+/* iPad (768px – 1023px): minor scale-downs */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .landing-ocean {
+    height: 58vh !important;
+  }
+  .landing-ship {
+    height: clamp(200px, 38vh, 380px) !important;
+    bottom: 95px !important;
+  }
+
+  /* Seagull rope lengths — longer = bird hangs lower */
+  .seagull-left  .seagull-rope { height: 28vh !important; }
+  .seagull-right .seagull-rope { height: 34vh !important; }
+
+  /* Wave bottom positions for iPad */
+  .wave-back-1  { bottom: -150px !important; }
+  .wave-back-2  { bottom: -160px !important; }
+  .wave-mid     { bottom: -170px !important; }
+  .wave-front-1 { bottom: -200px !important; }
+  .wave-front-2 { bottom: -200px !important; }
+}
+
+/* ── Result screen: text scales up on mobile (overrides inline clamp minimums) ── */
+@media (max-width: 767px) {
+  .result-panel .result-body         { font-size: 0.30rem !important; line-height: 1.5 !important; }
+  .result-panel .result-quest        { font-size: 0.20rem !important; line-height: 0.8 !important; }
+  .result-panel .result-label        { font-size: 0.35rem !important; }
+  .result-panel .result-archetype-name { font-size: 0.55rem !important; line-height: 1.1 !important;  }
+  .result-panel .result-day-label    { font-size: 0.30rem !important; }
+  .result-panel .result-quest-box    { height: 100% !important; }
+  .result-panel .result-quest-item   { margin-bottom: 0.5px !important; line-height: 0.8 !important; }
+}
+
+/* Mobile (< 768px): significant layout adjustments */
+@media (max-width: 767px) {
+  .landing-ocean {
+    height: 48vh !important;
+  }
+  .landing-ship {
+    height: clamp(180px, 34vh, 300px) !important;
+    bottom: 30px !important;
+  }
+  .cta-btn-img {
+    width: min(240px, 72vw) !important;
+  }
+  /* Journey form: less vertical padding on short mobile screens */
+  .journey-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  /* Voyage map connector lines: shorter on narrow screens */
+  .journey-container .voyage-connector {
+    width: 20px !important;
+  }
+
+  /* Seagull rope lengths — longer = bird hangs lower */
+  .seagull-left  .seagull-rope { height: 38vh !important; }
+  .seagull-right .seagull-rope { height: 46vh !important; }
+
+  /* Wave bottom positions for mobile */
+  .wave-back-1  { bottom: -70px !important; }
+  .wave-back-2  { bottom: -80px !important; }
+  .wave-mid     { bottom: -90px !important; }
+  .wave-front-1 { bottom: -120px !important; }
+  .wave-front-2 { bottom: -130px !important; }
+}
+
+/* ── Journey form textarea placeholder ── */
+.journal-textarea::placeholder {
+  color: rgba(80, 50, 20, 0.65);
+}
+
+/* ── Prevent selection/drag on decorative images and interactive UI ── */
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+
+button {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Voyage map: ship bobs above active node ── */
+@keyframes shipBob {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50%       { transform: translateX(-50%) translateY(-3px); }
+}
+
+/* ── Background: stars twinkle at low opacity ── */
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.1; }
+  50%      { opacity: 0.5; }
+}
+
+/* ── Background: fog blobs drift slowly left/right ── */
+@keyframes fogDrift {
+  from { transform: translateX(0px); }
+  to   { transform: translateX(60px); }
+}
+
+/* ── Background: atmospheric phrases float up and fade ── */
+@keyframes textFloat {
+  0%   { opacity: 0;    transform: translateY(0px); }
+  20%  { opacity: 0.55; transform: translateY(-4px); }
+  80%  { opacity: 0.55; transform: translateY(-14px); }
+  100% { opacity: 0;    transform: translateY(-20px); }
+}
+
+/* ── Result screen: sun pulses with warm glow ── */
+@keyframes sunGlow {
+  0%, 100% { filter: drop-shadow(0 0 16px rgba(247,168,48,0.4)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(247,168,48,0.8)); }
+}
+
+/* ── Result screen: ship sails in from off-screen left ── */
+@keyframes shipSailIn {
+  0%   { transform: translateX(-50%) translateX(-120vw) translateY(10px); }
+  70%  { transform: translateX(-50%) translateX(-10px)  translateY(-8px); }
+  100% { transform: translateX(-50%) translateX(0px)    translateY(0px); }
+}
+
+/* ── Result screen: VogogeNote panel slides up and fades in ── */
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Result screen: text overlays on panel fade in section by section ── */
+@keyframes textReveal {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
